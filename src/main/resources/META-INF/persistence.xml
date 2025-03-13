@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence xmlns="http://xmlns.jcp.org/xml/ns/persistence"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence
+                                 http://xmlns.jcp.org/xml/ns/persistence/persistence_2_2.xsd"
+             version="2.2">
+    <persistence-unit name="myPersistenceUnit">
+        <!-- Fournisseur JPA EclipseLink -->
+        <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+
+        <!-- Déclaration des entités -->
+        <class>org.example.entities.Student</class>
+        <class>org.example.entities.Address</class>
+        <class>org.example.entities.Course</class>
+        <class>org.example.entities.Module</class>
+        <!-- Ajoutez ici les autres classes d'entité si nécessaire -->
+
+        <properties>
+            <!-- Mode de gestion des flushs -->
+            <property name="jakarta.persistence.query.flush-mode" value="AUTO"/>
+
+            <!-- Configuration de la base de données MySQL -->
+            <property name="jakarta.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/> <!-- MySQL driver -->
+            <property name="jakarta.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/school?useSSL=false&amp;serverTimezone=UTC"/> <!-- URL de la base de données -->
+            <property name="jakarta.persistence.jdbc.user" value="root"/>
+            <property name="jakarta.persistence.jdbc.password" value=""/>
+
+            <!-- Configuration de la génération de DDL -->
+            <property name="jakarta.persistence.schema-generation.database.action" value="create"/>
+
+            <!-- Logging des requêtes SQL -->
+            <property name="jakarta.persistence.sql-show" value="true"/>
+
+            <!-- Autres propriétés spécifiques à EclipseLink -->
+            <property name="eclipselink.logging.level" value="FINE"/> <!-- Niveau de log pour les requêtes SQL -->
+        </properties>
+    </persistence-unit>
+</persistence>
